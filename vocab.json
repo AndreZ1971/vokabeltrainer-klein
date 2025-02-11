@@ -1,0 +1,5 @@
+[
+    { "englisch": "dog", "deutsch": "Hund", "optionen": ["Katze", "Hund", "Maus", "Pferd"] },
+    { "englisch": "apple", "deutsch": "Apfel", "optionen": ["Birne", "Apfel", "Banane", "Traube"] },
+    { "englisch": "house", "deutsch": "Haus", "optionen": ["Auto", "Haus", "Baum", "Fenster"] }
+]
