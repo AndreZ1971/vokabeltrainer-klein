@@ -4,7 +4,6 @@ let correctAnswer = "";
 let usedIndices = new Set();
 let correctCount = 0;
 
-// Funktion zum Mischen eines Arrays (Fisher-Yates Shuffle)
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -12,8 +11,7 @@ function shuffleArray(array) {
     }
 }
 
-// Vokabeln aus externer JSON-Datei laden
-fetch("vocab.json")
+fetch("vocab_en_de.json")
     .then(response => response.json())
     .then(data => {
         vocabulary = data;
@@ -21,7 +19,6 @@ fetch("vocab.json")
     })
     .catch(error => console.error("Fehler beim Laden der Vokabeln:", error));
 
-// Funktion zum zufälligen Laden der nächsten Frage
 function loadQuestion() {
     if (usedIndices.size >= vocabulary.length) {
         document.getElementById("question").innerText = "Alle Fragen beantwortet!";
@@ -56,7 +53,6 @@ function loadQuestion() {
     document.getElementById("nextButton").classList.add("hidden");
 }
 
-// Funktion zum Überprüfen der Antwort
 function checkAnswer(answer, button) {
     let buttons = document.getElementById("options").getElementsByTagName("button");
     for (let btn of buttons) {
@@ -72,14 +68,12 @@ function checkAnswer(answer, button) {
     document.getElementById("nextButton").classList.remove("hidden");
 }
 
-// Funktion für Push-Nachricht nach 10 richtigen Antworten
 function checkPraise() {
     if (correctCount % 10 === 0) {
         showPushNotification("Super gemacht! Weiter so! 🎉");
     }
 }
 
-// Funktion zur Anzeige einer Push-Benachrichtigung
 function showPushNotification(message) {
     let notification = document.createElement("div");
     notification.innerText = message;
@@ -103,5 +97,3 @@ function showPushNotification(message) {
 document.getElementById("nextButton").addEventListener("click", function() {
     loadQuestion();
 });
-
-loadQuestion();
